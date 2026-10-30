@@ -16,6 +16,10 @@ export async function getRegtestStatus() {
   return { connected: true, blockCount: count };
 }
 
+export async function getNewAddress() {
+  return rpc('getnewaddress');
+}
+
 export async function mineBlock(address, blocks = 1) {
   return rpc('generatetoaddress', [blocks, address]);
 }
@@ -23,4 +27,3 @@ export async function mineBlock(address, blocks = 1) {
 export async function getMempool() {
   return rpc('getrawmempool');
 }
-EOF

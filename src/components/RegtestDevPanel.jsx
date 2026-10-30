@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getRegtestStatus, mineBlock, getMempool } from '../services/bitcoinRegtest';
+import { getRegtestStatus, getNewAddress, mineBlock, getMempool } from '../services/bitcoinRegtest';
 
 export default function RegtestDevPanel() {
   const [status, setStatus] = useState(null);
@@ -22,7 +22,8 @@ export default function RegtestDevPanel() {
   const handleMine = async () => {
     setMining(true);
     try {
-      await mineBlock('bcrt1qs758ursh4q5nftc5d035xk6z0r9ly99l0m8l7j', 1);
+      const address = await getNewAddress();
+      await mineBlock(address, 1);
       await refresh();
     } catch (e) {
       setStatus({ connected: false, blockCount: 0 });
@@ -53,4 +54,3 @@ export default function RegtestDevPanel() {
     </div>
   );
 }
-EOF

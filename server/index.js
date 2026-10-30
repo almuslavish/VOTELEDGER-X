@@ -1,5 +1,5 @@
-const express = require('express');
-const cors = require('cors');
+import express from 'express';
+import cors from 'cors';
 
 const app = express();
 app.use(cors());
@@ -29,5 +29,3 @@ app.post('/api/bitcoin/rpc', async (req, res) => {
 });
 
 app.listen(5000, () => console.log('Bitcoin RPC proxy running on http://localhost:5000'));
-EOF
-mkdir -p /home/lavish-dev/Desktop/rrr/server /home/lavish-dev/Desktop/rrr/src/services /home/lavish-dev/Desktop/rrr/src/components
